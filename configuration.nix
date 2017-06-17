@@ -17,17 +17,17 @@
   # boot.loader.grub.efiInstallAsRemovable = true;
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  boot.loader.grub.device = "/dev/sdb"; # or "nodev" for efi only
 
-  networking.hostName = "nixos1"; # Define your hostname.
+  networking.hostName = "nixos01"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Select internationalisation properties.
-  i18n = {
-     consoleFont = "Lat2-Terminus16";
-     consoleKeyMap = "de";
-     defaultLocale = "de_CH.UTF-8";
-  };
+  # i18n = {
+  #   consoleFont = "Lat2-Terminus16";
+  #   consoleKeyMap = "us";
+  #   defaultLocale = "en_US.UTF-8";
+  # };
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
@@ -43,13 +43,17 @@
     gitAndTools.gitFull
     gnupg
     htop
+    jenkins
     libxml2 # xmllint
     libxslt
     lsof
     mosh
+    nodejs
+    postgresql96
     psmisc # pstree, killall et al
     pwgen
     quilt
+    sbt	
     tmux
     tree
     unzip
@@ -59,7 +63,7 @@
     wget
     which
     zip
-   ];
+  ];
 
   # List services that you want to enable:
 
@@ -67,10 +71,10 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 9000 443 5432 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  networking.firewall.enable = false;
+  # networking.firewall.enable = false;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
